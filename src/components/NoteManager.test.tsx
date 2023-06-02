@@ -3,6 +3,18 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { test, expect, describe, beforeEach } from 'vitest';
 import NoteManager from './NoteManager';
 import {useStore} from "../../store";
+import {NoteEditor} from "./NoteEditor";
+
+test('to make sure that grade is added', () => {
+	const { addNote } = useStore.getState();
+	addNote(
+		{title: 'Note 1'},
+		{content: ''},
+		{comment: 'Comment 1'}
+	)
+	const { notes } = useStore.getState();
+	expect(notes).toMatchSnapshot();
+});
 
 describe('NoteManager file test', () => {
 	beforeEach(() => {

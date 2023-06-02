@@ -1,0 +1,18 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`NoteEditor tests > should not update note if any field is empty 1`] = `
+[
+  {
+    "comment": {
+      "comment": "Comment 1",
+    },
+    "content": {
+      "content": "19",
+    },
+    "created": "02/06/2023 16:56:49",
+    "title": {
+      "title": "Note 1",
+    },
+  },
+]
+`;

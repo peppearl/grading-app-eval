@@ -3,7 +3,7 @@ import {beforeEach} from "vitest";
 import {useStore} from "../../store";
 import { render, screen, fireEvent } from '@testing-library/react';
 
-describe('NoteList', () => {
+describe('NoteList tests', () => {
 	beforeEach(() => {
 		useStore.getState().reset();
 	});
@@ -27,8 +27,10 @@ describe('NoteList', () => {
 		render(<NoteList />);
 
 		const deleteButton = screen.getByText('Supprimer');
-
 		fireEvent.click(deleteButton);
+
+		fireEvent.click(screen.getByText('Oui'));
+
 
 		expect(screen.queryByText('Note 1')).toBeNull();
 	});

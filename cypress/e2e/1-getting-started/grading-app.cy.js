@@ -65,6 +65,8 @@ describe('Grading app', () => {
 
     cy.get('.delete0').click()
 
+    cy.get('[data-testid="suredelete"]').click()
+
     cy.contains('Note 1').should('not.exist');
   })
 

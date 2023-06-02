@@ -8,11 +8,11 @@ export const NoteList = () => {
 
     const [showEditor, setShowEditor] = useState(false);
     const [editIndex, setEditIndex] = useState(null);
+    const [showModal, setShowModal] = useState(false);
 
     const handleDeleteNote = (index) => {
-        //if (window.confirm('Etes-vous sûr de supprimer cette note?')) {
             deleteNote(index);
-        //}
+            setShowModal(false);
     };
 
     const handleEditNote = (index) => {
@@ -53,7 +53,16 @@ export const NoteList = () => {
                         {note.showFullComment ? note.comment : note.comment.substring(0, 10)}
                     </p>
                     {note.showFullComment ? <p>Note: {note.content}</p> : <p></p>}
-                    <button className={"delete" + index.toString()} onClick={() => handleDeleteNote(index)}>Supprimer</button>
+                    <button className={"delete" + index.toString()} onClick={() => setShowModal(true)}>Supprimer</button>
+                    {showModal && (
+                        <div className="modal">
+                            <div className="modal-content">
+                                <p>Etes vous sûr de supprimer cette note?</p>
+                                <button data-testid="suredelete" onClick={() => handleDeleteNote(index)}>Oui</button>
+                                <button onClick={() => setShowModal(false)}>Non</button>
+                            </div>
+                        </div>
+                    )}
                     <button className={"edit" + index.toString()} onClick={() => handleEditNote(index)}>Modifier</button>
                     <button className={"show-hide" + index.toString()} onClick={() => handleShowComment(index)}>
                         {note.showFullComment ? "Cacher la note" : "Afficher entièrement la note"}
