@@ -9,6 +9,11 @@ function NoteManager() {
     const [newNote, setNewNote] = useState({ title: '', content: '', comment: '' });
 
     const handleCreateNote = () => {
+        // Check if any field is empty
+        if (newNote.title === "" || newNote.content === "" || newNote.comment === "") {
+            alert("Un ou plusieurs champs sont vides.")
+            return; // Do not proceed if any field is empty
+        }
         addNote(newNote.title, newNote.content, newNote.comment);
         setNewNote({ title: '', content: '', comment: '' });
     };
@@ -52,7 +57,6 @@ function NoteManager() {
             {/* Note List */}
             <NoteList />
 
-            {/* Edit Note */}
 
         </div>
     );

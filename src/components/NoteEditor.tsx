@@ -4,6 +4,11 @@ export const NoteEditor = ({ index, title, content, comment, setShowEditor }) =>
     const updateNote = useStore((state) => state.updateNote);
 
     const handleUpdateNote = () => {
+        // Check if any field is empty
+        if (title === "" || content === "" || comment === "") {
+            alert("Un ou plusieurs champs sont vides.")
+            return; // Do not proceed if any field is empty
+        }
         updateNote(index, title, content, comment);
         setShowEditor(false);
     };

@@ -55,7 +55,7 @@ export const NoteList = () => {
                     <button onClick={() => handleDeleteNote(index)}>Supprimer</button>
                     <button onClick={() => handleEditNote(index)}>Modifier</button>
                     <button onClick={() => handleShowComment(index)}>
-                        {note.showFullComment ? "Cacher le commentaire" : "Afficher le commentaire entier"}
+                        {note.showFullComment ? "Cacher la note" : "Afficher entièrement la note"}
                     </button>
                 </div>
             ))}
