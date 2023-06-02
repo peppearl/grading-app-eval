@@ -51,7 +51,7 @@ export const NoteList = () => {
                         Commentaire:{" "}
                         {note.showFullComment ? note.comment : note.comment.substring(0, 10)}
                     </p>
-                    <p>Note: {note.content}</p>
+                    {note.showFullComment ? <p>Note: {note.content}</p> : <p></p>}
                     <button onClick={() => handleDeleteNote(index)}>Supprimer</button>
                     <button onClick={() => handleEditNote(index)}>Modifier</button>
                     <button onClick={() => handleShowComment(index)}>
@@ -64,6 +64,7 @@ export const NoteList = () => {
                     index={editIndex}
                     title={notes[editIndex].title}
                     content={notes[editIndex].content}
+                    comment={notes[editIndex].comment}
                     setShowEditor={setShowEditor}
                 />
             )}

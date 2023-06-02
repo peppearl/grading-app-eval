@@ -18,11 +18,12 @@ export const useStore = create((set) => ({
             return { notes: updatedNotes };
         });
     },
-    updateNote: (index, title, content) => {
+    updateNote: (index, title, content, comment) => {
         set((state) => {
             const updatedNotes = [...state.notes];
             updatedNotes[index].title = title;
             updatedNotes[index].content = content;
+            updatedNotes[index].comment = comment;
             return { notes: updatedNotes };
         });
     },

@@ -13,6 +13,14 @@ function NoteManager() {
         setNewNote({ title: '', content: '', comment: '' });
     };
 
+    const handleContentChange = (e) => {
+        const value = e.target.value;
+        // Validate input to only allow numbers between 0 and 20
+        if (value === '' || (value >= 0 && value <= 20)) {
+            setNewNote({ ...newNote, content: value });
+        }
+    };
+
     return (
         <div>
             <h1>Note Manager</h1>
@@ -26,12 +34,13 @@ function NoteManager() {
                     value={newNote.title}
                     onChange={(e) => setNewNote({ ...newNote, title: e.target.value })}
                 />
-                <textarea
+                <input
+                    type="number"
                     placeholder="Note"
                     value={newNote.content}
-                    onChange={(e) => setNewNote({ ...newNote, content: e.target.value })}
-                ></textarea>
-                <input
+                    onChange={handleContentChange}
+                ></input>
+                <textarea
                     type="text"
                     placeholder="Commentaire"
                     value={newNote.comment}
