@@ -6,7 +6,7 @@ export const NoteEditor = ({ index, title, content, comment, setShowEditor }) =>
     const handleUpdateNote = () => {
         // Check if any field is empty
         if (title === "" || content === "" || comment === "") {
-            alert("Un ou plusieurs champs sont vides.")
+            //alert("Un ou plusieurs champs sont vides.")
             return; // Do not proceed if any field is empty
         }
         updateNote(index, title, content, comment);
@@ -24,20 +24,23 @@ export const NoteEditor = ({ index, title, content, comment, setShowEditor }) =>
     return (
         <div>
             <input
+                data-testid="title"
                 type="text"
                 value={title}
                 onChange={(e) => updateNote(index, e.target.value, content, comment)}
             />
             <input
+                data-testid="note"
                 type="number"
                 value={content}
                 onChange={handleContentChange}
             />
             <textarea
+                data-testid="comment"
                 value={comment}
                 onChange={(e) => updateNote(index, title, content, e.target.value)}
             ></textarea>
-            <button onClick={handleUpdateNote}>Sauvegarder</button>
+            <button data-testid="save" onClick={handleUpdateNote}>Sauvegarder</button>
         </div>
     );
 };

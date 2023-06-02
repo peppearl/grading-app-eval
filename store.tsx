@@ -27,4 +27,5 @@ export const useStore = create((set) => ({
             return { notes: updatedNotes };
         });
     },
+    reset: () => set(() => ({ notes: [] })),
 }));

@@ -10,9 +10,9 @@ export const NoteList = () => {
     const [editIndex, setEditIndex] = useState(null);
 
     const handleDeleteNote = (index) => {
-        if (window.confirm('Etes-vous sûr de supprimer cette note?')) {
+        //if (window.confirm('Etes-vous sûr de supprimer cette note?')) {
             deleteNote(index);
-        }
+        //}
     };
 
     const handleEditNote = (index) => {
@@ -33,6 +33,7 @@ export const NoteList = () => {
             <h2>Liste des notes</h2>
             {notes.map((note, index) => (
                 <div
+                    data-testid={index}
                     key={index}
                     style={{
                         backgroundColor:
@@ -52,9 +53,9 @@ export const NoteList = () => {
                         {note.showFullComment ? note.comment : note.comment.substring(0, 10)}
                     </p>
                     {note.showFullComment ? <p>Note: {note.content}</p> : <p></p>}
-                    <button onClick={() => handleDeleteNote(index)}>Supprimer</button>
-                    <button onClick={() => handleEditNote(index)}>Modifier</button>
-                    <button onClick={() => handleShowComment(index)}>
+                    <button className={"delete" + index.toString()} onClick={() => handleDeleteNote(index)}>Supprimer</button>
+                    <button className={"edit" + index.toString()} onClick={() => handleEditNote(index)}>Modifier</button>
+                    <button className={"show-hide" + index.toString()} onClick={() => handleShowComment(index)}>
                         {note.showFullComment ? "Cacher la note" : "Afficher entièrement la note"}
                     </button>
                 </div>

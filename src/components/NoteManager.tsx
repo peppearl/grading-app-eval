@@ -11,7 +11,7 @@ function NoteManager() {
     const handleCreateNote = () => {
         // Check if any field is empty
         if (newNote.title === "" || newNote.content === "" || newNote.comment === "") {
-            alert("Un ou plusieurs champs sont vides.")
+            //alert("Un ou plusieurs champs sont vides.")
             return; // Do not proceed if any field is empty
         }
         addNote(newNote.title, newNote.content, newNote.comment);
@@ -34,24 +34,27 @@ function NoteManager() {
             <div>
                 <h2>Créer une nouvelle note</h2>
                 <input
+                    data-testid="title-input"
                     type="text"
                     placeholder="Titre"
                     value={newNote.title}
                     onChange={(e) => setNewNote({ ...newNote, title: e.target.value })}
                 />
                 <input
+                    data-testid="note-input"
                     type="number"
                     placeholder="Note"
                     value={newNote.content}
                     onChange={handleContentChange}
                 ></input>
                 <textarea
+                    data-testid="comment-input"
                     type="text"
                     placeholder="Commentaire"
                     value={newNote.comment}
                     onChange={(e) => setNewNote({ ...newNote, comment: e.target.value })}
                 />
-                <button onClick={handleCreateNote}>Créer</button>
+                <button class="btn" onClick={handleCreateNote}>Créer</button>
             </div>
 
             {/* Note List */}
